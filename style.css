@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #ccc;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+header{
+    height: 80px;
+    background: #fff;
+    padding: ;
+}
+.nav-bar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+ul{
+    display: flex;
+    list-style: none;
+}
+
+ul li{
+    margin: 0 20px;
+}
+ul li a{
+    position: relative;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+}
+ul li a::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform .4s;
+    transform-origin: right;
+}
+ul li a:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+label #btn,
+label #cancel{
+    position: absolute;
+    top: 50%;
+    transform: translate(0 , -50%);
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    display: none;
+}
+
+#check{
+    display: none;
+}
+
+@media (max-width:800px) {
+   label #btn{
+       display: flex;
+   }
+    
+    ul{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 50%;
+        height: 100vh;
+        background: #000;
+        padding-top: 80px;
+        display: flex;
+        flex-direction: column;
+        line-height: 40px;
+        z-index: 100;
+        transition: .5s;
+    }
+    ul li{
+        margin-left: 50px;
+    }
+    ul li a{
+        color: #fff;
+    }
+    #check:checked ~ ul{
+        right: 0;
+    }
+    #check:checked ~ label #btn{
+       display: none;
+    }
+    #check:checked ~ label #cancel{
+        display: flex;
+        z-index: 101;
+        color: #fff;
+    }
+}
